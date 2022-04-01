@@ -5,19 +5,25 @@
     "strict": true,
     "jsx": "preserve",
     "moduleResolution": "node",
+    // 跳过对一些库的检测
     "skipLibCheck": true,
+    // 混合使用 导入模块
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "useDefineForClassFields": true,
     "sourceMap": true,
+    // 文件解析时的基本url
     "baseUrl": ".",
+    // 指定解析要使用的类型
     "types": ["webpack-env"],
+    // 路径解析
     "paths": {
       "@/*": ["src/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
+  // 当前哪些代码 需要通过编译器解析
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
