@@ -9,6 +9,7 @@ import App from "@/App.vue";
 
 import router from "@/router";
 import store from "@/store";
+import { setupStore } from "@/store";
 import { registerComponent } from "@/global";
 // import acRequest from "./service";
 
@@ -17,6 +18,8 @@ app.use(router);
 app.use(store);
 app.use(registerComponent);
 // app.use(ElementPlus);
+// 用户获取本地缓存，初始化store
+setupStore();
 
 app.mount("#app");
 

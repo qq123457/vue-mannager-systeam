@@ -1,8 +1,8 @@
 <template>
   <div class="login-panel">
     <h1 class="title">后台管理系统</h1>
-    <el-tabs type="border-card" class="demo-tabs" stretch>
-      <el-tab-pane>
+    <el-tabs type="border-card" class="demo-tabs" stretch v-model="currentTab">
+      <el-tab-pane name="account">
         <template #label>
           <span class="custom-tabs-label">
             <el-icon><user-filled /></el-icon>
@@ -12,14 +12,14 @@
         <login-account ref="accountRef"></login-account>
       </el-tab-pane>
 
-      <el-tab-pane>
+      <el-tab-pane name="phone">
         <template #label>
           <span class="custom-tabs-label">
             <el-icon><cellphone /></el-icon>
             <span>手机登录</span>
           </span>
         </template>
-        <login-phone></login-phone>
+        <login-phone ref="phoneRef"></login-phone>
       </el-tab-pane>
     </el-tabs>
 
@@ -28,7 +28,7 @@
       <el-link type="primary">忘记密码</el-link>
     </div>
 
-    <el-button type="primary" class="login-btn" @click="loginClick"
+    <el-button type="primary" class="login-btn" @click="handleLoginClick"
       >立即登录</el-button
     >
   </div>
@@ -44,15 +44,29 @@ export default defineComponent({
     LoginPhone
   },
   setup() {
-    const isKeepPassword = ref(false);
-    //                             设置为LoginAccount 导出来的对象类型
+    // 1. 定义属性
+    const isKeepPassword = ref(true);
+    //                             设置为LoginAccount 导出来的对象类型, InstanceType 用于 创建一个指定类型的构造函数的实例
     const accountRef = ref<InstanceType<typeof LoginAccount>>();
+    const phoneRef = ref<InstanceType<typeof LoginPhone>>();
 
-    const loginClick = () => {
-      console.log("login");
-      accountRef.value?.loginAction();
+    const currentTab = ref<string>("account");
+    // 定义方法
+    const handleLoginClick = () => {
+      if (currentTab.value === "account") {
+        accountRef.value?.loginAction(isKeepPassword.value);
+      } else {
+        // phoneRef.value?.loginAction()
+        console.log("调用phone组件中的登录逻辑");
+      }
     };
-    return { isKeepPassword, loginClick, accountRef };
+    return {
+      isKeepPassword,
+      accountRef,
+      phoneRef,
+      currentTab,
+      handleLoginClick
+    };
   }
 });
 </script>

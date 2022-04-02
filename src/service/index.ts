@@ -2,18 +2,18 @@
 
 import AcRequest from "./request/index";
 import { BASE_URL, TIME_OUT } from "./request/config";
+import localCache from "@/utils/cache";
 
 const acRequest = new AcRequest({
   baseURL: BASE_URL,
   timeout: TIME_OUT,
   interceptors: {
     requestInterceptor: (config) => {
-      const token = "abacccssss";
+      const token = localCache.getCache("token");
+
       if (token) {
-        config.headers = {
-          ...config.headers,
-          Authorization: `Bearer ${token}`
-        };
+        // ! 号的作用是，not null 不执行运行时检查
+        config.headers!.Authorization = `Bearer ${token}`;
       }
 
       console.log("实例的请求成功的拦截");

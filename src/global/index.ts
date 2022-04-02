@@ -1,8 +1,14 @@
 import { App } from "vue";
 
-import { Expand, Cellphone, UserFilled } from "@element-plus/icons-vue";
+import {
+  Expand,
+  Fold,
+  Cellphone,
+  UserFilled,
+  Menu
+} from "@element-plus/icons-vue";
 
-const components = [Expand, Cellphone, UserFilled];
+const components = [Expand, Cellphone, UserFilled, Menu, Fold];
 
 export function registerComponent(app: App) {
   for (const component of components) {

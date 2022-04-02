@@ -7,6 +7,18 @@ module.exports = defineConfig({
   publicPath: "./",
   transpileDependencies: true,
   outputDir: "./build",
+  // 配置跨域访问
+  devServer: {
+    proxy: {
+      "^/api": {
+        target: "http://152.136.185.210:4000",
+        pathRewrite: {
+          "^/api": ""
+        },
+        changeOrigin: true
+      }
+    }
+  },
   configureWebpack: {
     resolve: {
       alias: {

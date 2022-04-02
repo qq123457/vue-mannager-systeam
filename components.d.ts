@@ -2,27 +2,28 @@
 // We suggest you to commit this file into source control
 // Read more: https://github.com/vuejs/vue-next/pull/3399
 
-declare module 'vue' {
+declare module "vue" {
   export interface GlobalComponents {
-    ElButton: typeof import('element-plus/es')['ElButton']
-    ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
-    ElCheckboxGroup: typeof import('element-plus/es')['ElCheckboxGroup']
-    ElCol: typeof import('element-plus/es')['ElCol']
-    ElDatePicker: typeof import('element-plus/es')['ElDatePicker']
-    ElForm: typeof import('element-plus/es')['ElForm']
-    ElFormItem: typeof import('element-plus/es')['ElFormItem']
-    ElIcon: typeof import('element-plus/es')['ElIcon']
-    ElInput: typeof import('element-plus/es')['ElInput']
-    ElLink: typeof import('element-plus/es')['ElLink']
-    ElOption: typeof import('element-plus/es')['ElOption']
-    ElRadio: typeof import('element-plus/es')['ElRadio']
-    ElRadioGroup: typeof import('element-plus/es')['ElRadioGroup']
-    ElSelect: typeof import('element-plus/es')['ElSelect']
-    ElSwitch: typeof import('element-plus/es')['ElSwitch']
-    ElTabPane: typeof import('element-plus/es')['ElTabPane']
-    ElTabs: typeof import('element-plus/es')['ElTabs']
-    ElTimePicker: typeof import('element-plus/es')['ElTimePicker']
+    ElAside: typeof import("element-plus/es")["ElAside"];
+    ElButton: typeof import("element-plus/es")["ElButton"];
+    ElCheckbox: typeof import("element-plus/es")["ElCheckbox"];
+    ElContainer: typeof import("element-plus/es")["ElContainer"];
+    ElForm: typeof import("element-plus/es")["ElForm"];
+    ElFormItem: typeof import("element-plus/es")["ElFormItem"];
+    ElHeader: typeof import("element-plus/es")["ElHeader"];
+    ElIcon: typeof import("element-plus/es")["ElIcon"];
+    ElInput: typeof import("element-plus/es")["ElInput"];
+    ElLink: typeof import("element-plus/es")["ElLink"];
+    ElMain: typeof import("element-plus/es")["ElMain"];
+    ElMenu: typeof import("element-plus/es")["ElMenu"];
+    ElMenuGroup: typeof import("element-plus/es")["ElMenuGroup"];
+    ElMenuItem: typeof import("element-plus/es")["ElMenuItem"];
+    ElSubmenu: typeof import("element-plus/es")["ElSubmenu"];
+    ElSubMenu: typeof import("element-plus/es")["ElSubMenu"];
+    ElTabPane: typeof import("element-plus/es")["ElTabPane"];
+    ElTabs: typeof import("element-plus/es")["ElTabs"];
+    NavMenu: typeof import("./src/components/nav-menu/src/NavMenu.vue")["default"];
   }
 }
 
-export { }
+export {};
