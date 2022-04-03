@@ -1,17 +1,8 @@
 import { App } from "vue";
+import { registerComponent } from "./register-el-icon";
+import { registerProperties } from "./register-properties";
 
-import {
-  Expand,
-  Fold,
-  Cellphone,
-  UserFilled,
-  Menu
-} from "@element-plus/icons-vue";
-
-const components = [Expand, Cellphone, UserFilled, Menu, Fold];
-
-export function registerComponent(app: App) {
-  for (const component of components) {
-    app.component(component.name, component);
-  }
+export function register(app: App) {
+  app.use(registerComponent);
+  app.use(registerProperties);
 }

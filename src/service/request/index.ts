@@ -75,7 +75,7 @@ class AcRequest {
     );
   }
 
-  request<T>(config: AcRequestConfig<T>): Promise<T> {
+  request<T = any>(config: AcRequestConfig<T>): Promise<T> {
     return new Promise<T>((resolve, reject) => {
       // 1. 单个请求对config的处理
       if (config.interceptors?.requestInterceptor) {
@@ -106,19 +106,19 @@ class AcRequest {
     });
   }
 
-  get<T>(config: AcRequestConfig<T>): Promise<T> {
+  get<T = any>(config: AcRequestConfig<T>): Promise<T> {
     return this.request<T>({ ...config, method: "GET" });
   }
 
-  post<T>(config: AcRequestConfig<T>): Promise<T> {
+  post<T = any>(config: AcRequestConfig<T>): Promise<T> {
     return this.request<T>({ ...config, method: "POST" });
   }
 
-  delete<T>(config: AcRequestConfig<T>): Promise<T> {
+  delete<T = any>(config: AcRequestConfig<T>): Promise<T> {
     return this.request<T>({ ...config, method: "DELETE" });
   }
 
-  PUT<T>(config: AcRequestConfig<T>): Promise<T> {
+  PUT<T = any>(config: AcRequestConfig<T>): Promise<T> {
     return this.request<T>({ ...config, method: "PUT" });
   }
 

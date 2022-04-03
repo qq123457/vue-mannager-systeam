@@ -10,17 +10,17 @@ import App from "@/App.vue";
 import router from "@/router";
 import store from "@/store";
 import { setupStore } from "@/store";
-import { registerComponent } from "@/global";
+import { register } from "@/global";
 // import acRequest from "./service";
 
 const app = createApp(App);
-app.use(router);
+app.use(register);
 app.use(store);
-app.use(registerComponent);
+
 // app.use(ElementPlus);
 // 用户获取本地缓存，初始化store
 setupStore();
-
+app.use(router);
 app.mount("#app");
 
 // console.log(process.env.VUE_APP_BASE_URL);

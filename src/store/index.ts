@@ -1,6 +1,7 @@
 import { createStore, useStore as useVueStore } from "vuex";
 import { IRootState, IStoreType } from "./types";
 import login from "./login/login";
+import system from "./main/system/system";
 import { Store } from "element-plus/es/components/table/src/store";
 
 const store = createStore<IRootState>({
@@ -14,7 +15,8 @@ const store = createStore<IRootState>({
   getters: {},
   actions: {},
   modules: {
-    login
+    login,
+    system
   }
 });
 

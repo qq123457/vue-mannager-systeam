@@ -5,7 +5,7 @@
       <span class="title" v-if="!collapse">HOU 管理系统</span>
     </div>
     <el-menu
-      default-active="2"
+      :default-active="defaultValue"
       class="el-menu-vertical el-menu"
       background-color="#0c2135"
       text-color="#b7bdc3"
@@ -19,7 +19,11 @@
               <span>{{ item.name }}</span>
             </template>
             <template v-for="subitem in item.children" :key="subitem.id">
-              <el-menu-item class="el-menu-item" :index="subitem.id + ''">
+              <el-menu-item
+                class="el-menu-item"
+                :index="subitem.id + ''"
+                @click="handleMenuItemClick(subitem)"
+              >
                 <span>{{ subitem.name }}</span>
               </el-menu-item>
             </template>
@@ -36,8 +40,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue";
+import { defineComponent, computed, ref } from "vue";
 import { useStore } from "@/store";
+import { useRouter, useRoute } from "vue-router";
+import { pathMapToMenu } from "@/utils/map-menus";
 
 export default defineComponent({
   props: {
@@ -46,13 +52,29 @@ export default defineComponent({
       default: false
     }
   },
-  setup(props) {
-    console.log(props);
+  setup() {
+    // store
     const store = useStore();
     const userMenus = computed(() => store.state.login.userMenus);
 
+    // router
+    const router = useRouter();
+    const route = useRoute();
+    const currentPath = route.path;
+
+    // data
+    const menu = pathMapToMenu(userMenus.value, currentPath);
+    const defaultValue = ref(menu.id + "");
+
+    const handleMenuItemClick = (item: any) => {
+      router.push({
+        path: item.url ?? "/not-found"
+      });
+    };
     return {
-      userMenus
+      userMenus,
+      defaultValue,
+      handleMenuItemClick
     };
   }
 });
