@@ -1,11 +1,17 @@
 <template>
   <div class="usermanager">
-    <ac-page-search :search-form-config="formConfig"></ac-page-search>
+    <ac-page-search
+      :search-form-config="formConfig"
+      @reset-btn-click="handleResetClick"
+      @query-btn-click="handleQueryClick"
+    ></ac-page-search>
 
-    <page-content
+    <ac-page-content
       :contentTableConfig="tableConfig"
       @selectChange="selectChange"
-    ></page-content>
+      page-name="users"
+      ref="acPageContentRef"
+    ></ac-page-content>
   </div>
 </template>
 
@@ -13,18 +19,23 @@
 import { defineComponent } from "vue";
 
 import AcPageSearch from "@/base-ui/page-search";
-import PageContent from "@/base-ui/page-content";
+import AcPageContent from "@/base-ui/page-content";
 
 import { formConfig } from "./config/search-config";
 import { tableConfig } from "./config/table-config";
+
+import { userPageSearch } from "@/hooks/usePageSearch";
 
 export default defineComponent({
   name: "UserManager",
   components: {
     AcPageSearch,
-    PageContent
+    AcPageContent
   },
   setup() {
+    const [acPageContentRef, handleResetClick, handleQueryClick] =
+      userPageSearch();
+
     const selectChange = (value: any) => {
       console.log(value);
     };
@@ -32,6 +43,9 @@ export default defineComponent({
     return {
       formConfig,
       tableConfig,
+      acPageContentRef,
+      handleResetClick,
+      handleQueryClick,
       selectChange
     };
   }

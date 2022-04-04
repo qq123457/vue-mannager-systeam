@@ -1,20 +1,21 @@
 export const tableConfig = {
-  title: "用户列表",
+  title: "商品列表",
   propList: [
-    { prop: "name", label: "用户名", minWidth: "100", slotName: "name" },
+    { prop: "name", label: "商品名称", minWidth: "80", slotName: "name" },
+    { prop: "oldPrice", label: "原价", minWidth: "80", slotName: "oldPrice" },
+    { prop: "newPrice", label: "现价", minWidth: "80", slotName: "newPrice" },
     {
-      prop: "realname",
-      label: "真实姓名",
+      prop: "imgUrl",
+      label: "商品图片",
       minWidth: "100",
-      slotName: "realname"
+      slotName: "imgUrl"
     },
     {
-      prop: "cellphone",
-      label: "手机号",
+      prop: "status",
+      label: "状态",
       minWidth: "100",
-      slotName: "cellphone"
+      slotName: "status"
     },
-    { prop: "enable", label: "状态", minWidth: "100", slotName: "status" },
     {
       prop: "createAt",
       label: "创建时间",
@@ -30,6 +31,5 @@ export const tableConfig = {
     { label: "操作", minWidth: "120", slotName: "handler" }
   ],
   showIndexColumn: true,
-  showSelectColumn: true,
-  showFooter: true
+  showSelectColumn: true
 };

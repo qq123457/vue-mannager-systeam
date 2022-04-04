@@ -9,14 +9,15 @@ import {
 import { IAccount } from "@/service/login/type";
 import localCache from "@/utils/cache";
 import router from "@/router";
-import { mapMenusToRoutes } from "@/utils/map-menus";
+import { mapMenusToPremission, mapMenusToRoutes } from "@/utils/map-menus";
 const loginModule: Module<ILoginState, IRootState> = {
   namespaced: true,
   state() {
     return {
       token: "",
       userInfo: {},
-      userMenus: []
+      userMenus: [],
+      permissions: []
     };
   },
   mutations: {
@@ -36,6 +37,10 @@ const loginModule: Module<ILoginState, IRootState> = {
       routes.forEach((route) => {
         router.addRoute("main", route);
       });
+
+      // 获取用户按钮权限
+      const permissions = mapMenusToPremission(userMenus);
+      state.permissions = permissions;
     }
   },
   getters: {},

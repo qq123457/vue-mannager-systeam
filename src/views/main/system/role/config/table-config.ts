@@ -1,20 +1,13 @@
 export const tableConfig = {
-  title: "用户列表",
+  title: "角色列表",
   propList: [
-    { prop: "name", label: "用户名", minWidth: "100", slotName: "name" },
+    { prop: "name", label: "角色名", minWidth: "100", slotName: "name" },
     {
-      prop: "realname",
-      label: "真实姓名",
+      prop: "intro",
+      label: "职业",
       minWidth: "100",
-      slotName: "realname"
+      slotName: "intro"
     },
-    {
-      prop: "cellphone",
-      label: "手机号",
-      minWidth: "100",
-      slotName: "cellphone"
-    },
-    { prop: "enable", label: "状态", minWidth: "100", slotName: "status" },
     {
       prop: "createAt",
       label: "创建时间",

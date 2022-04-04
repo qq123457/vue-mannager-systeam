@@ -1,16 +1,26 @@
 <template>
   <div class="rolemanager">
-    <h2>rolemanager</h2>
+    <ac-page-search :search-form-config="formConfig"></ac-page-search>
+    <ac-page-content
+      :content-table-config="tableConfig"
+      page-name="role"
+    ></ac-page-content>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import AcPageSearch from "@/base-ui/page-search";
+import AcPageContent from "@/base-ui/page-content";
+
+import { tableConfig } from "./config/table-config";
+import { formConfig } from "./config/search-config";
 
 export default defineComponent({
   name: "RoleManager",
+  components: { AcPageSearch, AcPageContent },
   setup() {
-    return {};
+    return { formConfig, tableConfig };
   }
 });
 </script>

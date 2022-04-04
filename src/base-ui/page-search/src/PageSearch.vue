@@ -6,11 +6,11 @@
       </template>
       <template #footer>
         <div class="handle-btns">
-          <el-button type="default">
+          <el-button type="default" @click="handleResetClick">
             <el-icon><refresh /></el-icon>
             重置
           </el-button>
-          <el-button type="primary">
+          <el-button type="primary" @click="handleQuery">
             <el-icon><search /></el-icon>
             搜索
           </el-button>
@@ -34,16 +34,31 @@ export default defineComponent({
   components: {
     AcForm
   },
-  setup() {
-    const formData = ref({
-      id: "",
-      name: "",
-      password: "",
-      sport: "",
-      createTime: ""
-    });
+  emits: ["resetBtnClick", "queryBtnClick"],
+  setup(props, { emit }) {
+    // 1. form 中的属性动态来决定
+    const formItems = props.searchFormConfig?.formItems ?? [];
+    const formOriginData: any = {};
+    for (const item of formItems) {
+      formOriginData[item.field] = "";
+    }
+    const formData = ref(formOriginData);
+
+    // 2. 重置 操作
+    const handleResetClick = () => {
+      Object.keys(formOriginData).forEach((key) => {
+        formData.value[key] = formOriginData[key];
+      });
+      emit("resetBtnClick");
+    };
+    // 3. 搜索
+    const handleQuery = () => {
+      emit("queryBtnClick", formData.value);
+    };
     return {
-      formData
+      formData,
+      handleResetClick,
+      handleQuery
     };
   }
 });

@@ -1,16 +1,25 @@
 <template>
   <div class="menumanager">
-    <h2>menumanager</h2>
+    <ac-page-content
+      :content-table-config="tableConfig"
+      page-name="menu"
+    ></ac-page-content>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import AcPageContent from "@/base-ui/page-content";
+
+import { tableConfig } from "./config/table-config";
 
 export default defineComponent({
   name: "MenuManager",
+  components: {
+    AcPageContent
+  },
   setup() {
-    return {};
+    return { tableConfig };
   }
 });
 </script>
