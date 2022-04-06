@@ -4,16 +4,20 @@
 
 declare module "vue" {
   export interface GlobalComponents {
+    AcPageContent: typeof import("./src/components/page-content/src/AcPageContent.vue")["default"];
+    AcPageModal: typeof import("./src/components/page-modal/src/AcPageModal.vue")["default"];
     ElAside: typeof import("element-plus/es")["ElAside"];
     ElAvatar: typeof import("element-plus/es")["ElAvatar"];
     ElBreadcrumb: typeof import("element-plus/es")["ElBreadcrumb"];
     ElBreadcrumbItem: typeof import("element-plus/es")["ElBreadcrumbItem"];
     ElButton: typeof import("element-plus/es")["ElButton"];
+    ElCard: typeof import("element-plus/es")["ElCard"];
     ElCheckbox: typeof import("element-plus/es")["ElCheckbox"];
     ElCol: typeof import("element-plus/es")["ElCol"];
     ElConfigProvider: typeof import("element-plus/es")["ElConfigProvider"];
     ElContainer: typeof import("element-plus/es")["ElContainer"];
     ElDatePicker: typeof import("element-plus/es")["ElDatePicker"];
+    ElDialog: typeof import("element-plus/es")["ElDialog"];
     ElDropdown: typeof import("element-plus/es")["ElDropdown"];
     ElDropdownItem: typeof import("element-plus/es")["ElDropdownItem"];
     ElDropdownMenu: typeof import("element-plus/es")["ElDropdownMenu"];
@@ -36,8 +40,10 @@ declare module "vue" {
     ElTableColumn: typeof import("element-plus/es")["ElTableColumn"];
     ElTabPane: typeof import("element-plus/es")["ElTabPane"];
     ElTabs: typeof import("element-plus/es")["ElTabs"];
+    ElTree: typeof import("element-plus/es")["ElTree"];
     NavHeader: typeof import("./src/components/nav-header/src/NavHeader.vue")["default"];
     NavMenu: typeof import("./src/components/nav-menu/src/NavMenu.vue")["default"];
+    PageSearch: typeof import("./src/components/page-search/src/PageSearch.vue")["default"];
     UserInfo: typeof import("./src/components/nav-header/src/UserInfo.vue")["default"];
   }
 }

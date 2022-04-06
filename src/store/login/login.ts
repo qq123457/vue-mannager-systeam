@@ -45,7 +45,7 @@ const loginModule: Module<ILoginState, IRootState> = {
   },
   getters: {},
   actions: {
-    async accountLogin({ commit }, palyload: IAccount) {
+    async accountLogin({ commit, dispatch }, palyload: IAccount) {
       // 1. 登录逻辑实现
       const loginResult = await accountLoginRequest(palyload);
       const { id, token } = loginResult.data;
@@ -54,6 +54,10 @@ const loginModule: Module<ILoginState, IRootState> = {
       commit("changeToken", token);
       // 将token保存到本地storage
       localCache.setCache("token", token);
+
+      // 发送初始化请求
+      dispatch("getInitialDataAction", null, { root: true });
+
       // 2. 请求用户信息
       const userInfoResult = await useInfoByIdRequest(id);
       const userInfo = userInfoResult.data;
@@ -73,10 +77,11 @@ const loginModule: Module<ILoginState, IRootState> = {
     // phoneLoginAction({ commit }, palyload: any) {
     //   console.log("执行phoneLoginAction");
     // }
-    loadLocalStora({ commit }) {
+    loadLocalStora({ commit, dispatch }) {
       const token = localCache.getCache("token");
       if (token) {
         commit("changeToken", token);
+        dispatch("getInitialDataAction", null, { root: true });
       }
       const userInfo = localCache.getCache("userInfo");
       if (userInfo) {

@@ -9,7 +9,8 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import AcPageContent from "@/base-ui/page-content";
+
+import AcPageContent from "@/components/page-content";
 
 import { tableConfig } from "./config/table-config";
 

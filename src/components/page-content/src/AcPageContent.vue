@@ -9,7 +9,9 @@
     >
       <!-- 1.header 插槽 -->
       <template #header-handler>
-        <el-button type="primary" v-if="isCreate">新键用户</el-button>
+        <el-button type="primary" v-if="isCreate" @click="handleCreateClick"
+          >新键用户</el-button
+        >
         <el-button>
           <el-icon><refresh /></el-icon>
         </el-button>
@@ -29,12 +31,22 @@
       <template #updateAt="scope">
         <span>{{ $filters.formatTime(scope.row.updateAt) }}</span>
       </template>
-      <template #handler>
+      <template #handler="scope">
         <div class="handle-btns">
-          <el-button type="text" size="small" v-if="isUpdate">
+          <el-button
+            type="text"
+            size="small"
+            v-if="isUpdate"
+            @click="handleEditClick(scope.row)"
+          >
             <el-icon><edit /></el-icon>编辑</el-button
           >
-          <el-button type="text" size="small" v-if="isDelete">
+          <el-button
+            type="text"
+            size="small"
+            v-if="isDelete"
+            @click="handleDeleteClick(scope.row)"
+          >
             <el-icon><delete /> </el-icon>删除</el-button
           >
         </div>
@@ -73,7 +85,7 @@ export default defineComponent({
   components: {
     AcTable
   },
-  emits: ["selectChange"],
+  emits: ["selectChange", "createBtnClick", "editBtnClick"],
   setup(props, { emit }) {
     const store = useStore();
 
@@ -122,9 +134,26 @@ export default defineComponent({
         return true;
       }
     );
+
+    // 5. 添加/删除/修改
+    const handleDeleteClick = (item: any) => {
+      store.dispatch("system/deletePageDataAction", {
+        pageName: props.pageName,
+        id: item.id
+      });
+    };
+    const handleCreateClick = () => {
+      emit("createBtnClick");
+    };
+    const handleEditClick = (item: any) => {
+      emit("editBtnClick", item);
+    };
     return {
       selectChange,
       getPageData,
+      handleDeleteClick,
+      handleCreateClick,
+      handleEditClick,
       dataList,
       listCount,
       pageInfo,

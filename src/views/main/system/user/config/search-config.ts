@@ -44,9 +44,9 @@ export const formConfig: IForm = {
     }
   ],
   labelWidth: "120px",
-  colLayout: {
-    span: 8
-  },
+  // colLayout: {
+  //   span: 8
+  // },
   itemStyle: {
     padding: "10px 40px"
   }

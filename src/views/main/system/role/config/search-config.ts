@@ -15,7 +15,7 @@ export const formConfig: IForm = {
       placeholder: "请输入职业"
     },
     {
-      field: "createTime",
+      field: "createAt",
       type: "datepicker",
       label: "创建时间",
       placeholder: "请选择创建时间",

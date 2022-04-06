@@ -4,7 +4,7 @@ export const tableConfig = {
     { prop: "name", label: "角色名", minWidth: "100", slotName: "name" },
     {
       prop: "intro",
-      label: "职业",
+      label: "权限介绍",
       minWidth: "100",
       slotName: "intro"
     },

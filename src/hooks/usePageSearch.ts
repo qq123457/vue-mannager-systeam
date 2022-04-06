@@ -1,7 +1,7 @@
 import { ref } from "vue";
-import AcPageContent from "@/base-ui/page-content";
+import AcPageContent from "@/components/page-content";
 
-export function userPageSearch() {
+export function usePageSearch() {
   const acPageContentRef = ref<InstanceType<typeof AcPageContent>>();
   const handleResetClick = (): void => {
     acPageContentRef.value?.getPageData();

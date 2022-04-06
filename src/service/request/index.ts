@@ -118,8 +118,8 @@ class AcRequest {
     return this.request<T>({ ...config, method: "DELETE" });
   }
 
-  PUT<T = any>(config: AcRequestConfig<T>): Promise<T> {
-    return this.request<T>({ ...config, method: "PUT" });
+  put<T = any>(config: AcRequestConfig<T>): Promise<T> {
+    return this.request<T>({ ...config, method: "PATCH" });
   }
 
   // post() {}

@@ -31,5 +31,6 @@ export const tableConfig = {
     { label: "操作", minWidth: "120", slotName: "handler" }
   ],
   showIndexColumn: true,
-  showSelectColumn: true
+  showSelectColumn: true,
+  showFooter: true
 };
